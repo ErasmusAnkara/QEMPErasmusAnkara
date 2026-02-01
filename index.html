@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Quién es más probable</title>
+
+  <!-- Neon Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at center, #0f2027, #000000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      margin-bottom: 8px;
+      color: #00f7ff;
+      text-shadow:
+        0 0 5px #00f7ff,
+        0 0 10px #00f7ff,
+        0 0 20px #00f7ff;
+      animation: neonPulse 2.5s infinite ease-in-out;
+    }
+
+    .credit {
+      font-size: 0.7rem;
+      opacity: 0.85;
+      margin-bottom: 30px;
+      color: #00f7ff;
+      text-shadow:
+        0 0 3px #00f7ff,
+        0 0 6px #00f7ff;
+    }
+
+    @keyframes neonPulse {
+      0% {
+        transform: scale(1);
+        text-shadow:
+          0 0 5px #00f7ff,
+          0 0 10px #00f7ff,
+          0 0 20px #00f7ff;
+      }
+      50% {
+        transform: scale(1.03);
+        text-shadow:
+          0 0 7px #00f7ff,
+          0 0 14px #00f7ff,
+          0 0 24px #00f7ff;
+      }
+      100% {
+        transform: scale(1);
+        text-shadow:
+          0 0 5px #00f7ff,
+          0 0 10px #00f7ff,
+          0 0 20px #00f7ff;
+      }
+    }
+
+    button {
+      background: white;
+      border: none;
+      padding: 12px 26px;
+      font-size: 1rem;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: bold;
+    }
+
+    button:active {
+      transform: scale(0.96);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    #pregunta {
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 50px;
+      margin-top: 25px;
+      line-height: 1.4;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile extra optimization */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+
+      h1 {
+        margin-bottom: 30px;
+      }
+
+      button {
+        font-size: 1.2rem;
+        padding: 16px 20px;
+      }
+
+      #pregunta {
+        min-height: 110px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>QUIÉN ES MÁS PROBABLE</h1>
+    <div class="credit">Made with 🍺 by Armenteros</div>
+
+    <button onclick="generarPregunta()">
+      Generar pregunta
+    </button>
+
+    <div id="pregunta">
+      Pulsa para empezar 😈
+    </div>
+  </div>
+
+  <script>
+    const preguntas = [
+      "¿Quién es más probable que se lie con alguien esta noche?",
+      "¿Quién es más probable que mande un mensaje que luego se arrepienta?",
+      "¿Quién es más probable que se pierda volviendo a casa?",
+      "¿Quién es más probable que acabe en otra fiesta random?",
+      "¿Quién es más probable que bese a alguien sin saber su nombre?",
+      "¿Quién es más probable que acabe bailando encima de algo?",
+      "¿Quién es más probable que desaparezca 2 horas y vuelva como si nada?",
+      "¿Quién es más probable que invite a un desconocido al grupo?",
+      "¿Quién es más probable que acabe hablando con el DJ?",
+      "¿Quién es más probable que diga 'una última y nos vamos' 5 veces?",
+      "¿Quién es más probable que pierda el móvil de fiesta?",
+      "¿Quién es más probable que tenga la mejor anécdota mañana?",
+      "¿Quién es más probable que acabe en after inesperado?",
+      "¿Quién es más probable que flirtee en otro idioma?",
+      "¿Quién es más probable que se líe con alguien del Erasmus?"
+    ];
+
+    function generarPregunta() {
+      const random = Math.floor(Math.random() * preguntas.length);
+      const contenedor = document.getElementById("pregunta");
+      contenedor.style.animation = "none";
+      void contenedor.offsetWidth;
+      contenedor.style.animation = "fadeIn 0.4s ease";
+      contenedor.textContent = preguntas[random];
+    }
+  </script>
+</body>
+</html>
